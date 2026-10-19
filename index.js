@@ -4,6 +4,7 @@ import hospedes from './hospedes.js'
 import adicionarHospede from "./adicionarHospede.js";
 import listarHospedes from "./listarHospedes.js";
 import atualizarHospede from './atualizarHospede.js'
+import removerHospede from "./removerHospede.js";
 
 const prompt = PromptSync();
 
@@ -81,6 +82,16 @@ do {
 
             if (atualizarHospede(hospedes, id, { nome: novoNome, diarias: novasDiarias, servicos: novosServicos })) {
                 console.log('Hóspede atualizado com sucesso!')
+            }
+            break
+        }
+        case '4': {
+            let numQuarto = Number(prompt('Número do quarto: '))
+            let confirmacao = prompt('Confirmar check-out? (sim/nao): ').trim().toLowerCase()
+            if (confirmacao === 'sim') {
+                removerHospede(hospedes, numQuarto)
+            } else {
+                console.log('Check-out cancelado.')
             }
             break
         }
