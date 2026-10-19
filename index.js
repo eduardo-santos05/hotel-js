@@ -97,6 +97,11 @@ do {
             }
             break
         }
+        case '5': {
+            let numQuarto = Number(prompt('Número do quarto: '))
+            calcularConta(hospedes, precos, numQuarto)
+            break
+        }
         case '0': {
             console.log('Até logo!')
             break
