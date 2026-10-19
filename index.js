@@ -3,6 +3,7 @@ import PromptSync from "prompt-sync";
 import hospedes from './hospedes.js'
 import adicionarHospede from "./adicionarHospede.js";
 import listarHospedes from "./listarHospedes.js";
+import atualizarHospede from './atualizarHospede.js'
 
 const prompt = PromptSync();
 
@@ -53,6 +54,34 @@ do {
         }
         case '2': {
             listarHospedes(hospedes)
+            break
+        }
+        case '3': {
+            let id = Number(prompt('ID do hóspede: '))
+            let novoNome = prompt('Novo nome (Enter para manter): ').trim()
+            let novasDiarias = Number(prompt('Novas diárias (Enter para manter): '))
+            let novosServicos = []
+            let trocarServicos = prompt('Trocar os serviços? (sim/nao): ').trim().toLowerCase()
+            if (trocarServicos === 'sim') {
+                let novoServico = prompt('Serviço: ').trim()
+                if (novoServico !== '') {
+                    novosServicos.push(novoServico)
+                }
+                let adicionarOutroServico = 'sim'
+                while(adicionarOutroServico === 'sim') {
+                    adicionarOutroServico = prompt('Adicionar outro serviço? (sim/nao): ').trim().toLowerCase()
+                    if (adicionarOutroServico === 'sim') {
+                        novoServico = prompt('Serviço: ').trim()
+                        if (novoServico !== '') {
+                            novosServicos.push(novoServico)
+                        }
+                    }
+                }
+            }
+
+            if (atualizarHospede(hospedes, id, { nome: novoNome, diarias: novasDiarias, servicos: novosServicos })) {
+                console.log('Hóspede atualizado com sucesso!')
+            }
             break
         }
         case '0': {
