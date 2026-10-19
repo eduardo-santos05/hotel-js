@@ -5,4 +5,12 @@ export default function removerHospede(hospedes, quarto) {
         console.log(`Erro: O quarto ${hospedes[indice].quarto} está vazio!`)
         return false
     }
+
+    let hospede = hospedes[indice].nome
+
+    hospedes.splice(indice, 1)
+
+    console.log(`Check-out de ${hospede} realizado.`)
+
+    return true
 }
