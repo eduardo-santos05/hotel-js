@@ -4,6 +4,11 @@ export default function adicionarHospede(hospedes, novoHospede) {
         return false
     }
 
+    if (!novoHospede.nome || novoHospede.nome.trim() === '') {
+        console.log('Erro: O nome do hóspede é obrigatório!')
+        return false
+    }
+
     for (let i = 0; i < hospedes.length; i++) {
         if (hospedes[i].quarto === novoHospede.quarto) {
             console.log(`Erro: O quarto ${hospedes[i].quarto} já está ocupado!`)
