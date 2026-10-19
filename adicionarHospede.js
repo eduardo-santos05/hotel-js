@@ -1,4 +1,9 @@
 export default function adicionarHospede(hospedes, novoHospede) {
+    if (!Number.isInteger(novoHospede.quarto) || novoHospede.quarto <= 0) {
+        console.log('Erro: Informe um número de quarto válido!')
+        return false
+    }
+
     for (let i = 0; i < hospedes.length; i++) {
         if (hospedes[i].quarto === novoHospede.quarto) {
             console.log(`Erro: O quarto ${hospedes[i].quarto} já está ocupado!`)
