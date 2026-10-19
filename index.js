@@ -1,10 +1,7 @@
 import PromptSync from "prompt-sync";
 
+import hospedes from './hospedes.js'
 import adicionarHospede from "./adicionarHospede.js";
-import listarHospedes from "./listarHospedes.js";
-import atualizarHospede from "./atualizarHospede.js";
-import removerHospede from "./removerHospede.js";
-import calcularConta from "./calcularConta.js";
 
 const prompt = PromptSync();
 
@@ -25,6 +22,34 @@ do {
     opcao = prompt('Escolha uma opção: ')
 
     switch (opcao) {
+        case '1': {
+            let quarto = Number(prompt('Quarto: '))
+            let nome = prompt('Nome: ').trim()
+            let diarias = Number(prompt('Diárias: '))
+            let adicionarServico = prompt('Adicionar serviço? (sim/nao): ').trim().toLowerCase()
+            let servicos = []
+            if (adicionarServico === 'sim') {
+                let servico = prompt('Serviço: ')
+                if (servico !== '') {
+                    servicos.push(servico)
+                }
+                while (adicionarServico === 'sim') {
+                    adicionarServico = prompt('Outro serviço? (sim/nao): ').trim().toLowerCase()
+                    if (adicionarServico === 'sim') {
+                        servico = prompt('Serviço: ')
+                        if (servico !== '') {
+                            servicos.push(servico)
+                        }
+                    }
+                }
+            }
+
+            if (adicionarHospede(hospedes, { quarto, nome, diarias, servicos})) {
+                console.log('Check-in realizado com sucesso!')
+            }
+            
+            break
+        }
         case '0': {
             console.log('Até logo!')
             break
