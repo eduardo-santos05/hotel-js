@@ -2,6 +2,7 @@ import PromptSync from "prompt-sync";
 
 import hospedes from './hospedes.js'
 import adicionarHospede from "./adicionarHospede.js";
+import listarHospedes from "./listarHospedes.js";
 
 const prompt = PromptSync();
 
@@ -48,6 +49,10 @@ do {
                 console.log('Check-in realizado com sucesso!')
             }
             
+            break
+        }
+        case '2': {
+            listarHospedes(hospedes)
             break
         }
         case '0': {
