@@ -11,4 +11,8 @@ export default function adicionarHospede(hospedes, novoHospede) {
     } else {
         novoHospede.id = 1
     }
+
+    hospedes.push(novoHospede)
+
+    return true
 }
