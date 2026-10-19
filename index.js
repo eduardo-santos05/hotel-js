@@ -5,6 +5,8 @@ import adicionarHospede from "./adicionarHospede.js";
 import listarHospedes from "./listarHospedes.js";
 import atualizarHospede from './atualizarHospede.js'
 import removerHospede from "./removerHospede.js";
+import precos from "./precos.js";
+import calcularConta from "./calcularConta.js";
 
 const prompt = PromptSync();
 
